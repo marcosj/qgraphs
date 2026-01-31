@@ -1,5 +1,7 @@
 # qgraphs
-Quantum graph algorithms
+Quantum circuits for the induced subgraph isomorphism problem
+
+![flowchart](iso.png)
 
 ## Ising & QUBO
 - Lucas, A. (2014). *Ising formulations of many NP problems* [DOI](https://arxiv.org/abs/1302.5843)
