@@ -10,8 +10,8 @@ The pipeline reduces subgraph isomorphism to a maximum clique variation via modu
 graph TD
     Sub[Induced Subgraph Isomorphism Problem H ⊆ G] --> Red[Reduction to Clique Problem / Modular Product Graph]
     
-    Red --> Ham[Hamiltonian: QUBO Formulation H_tot = H_A + H_B]
-    Ham --> Ising[Ising Formulation: x_i = (1 - Z_i) / 2]
+    Red --> Ham["Hamiltonian: QUBO Formulation H_tot = H_A + H_B"]
+    Ham --> Ising["Ising Formulation: x_i = (1 - Z_i) / 2"]
     
     Red --> Ansatz[Equivariant Ansatz]
     Ansatz --> Dicke[Pseudo-Dicke State Preparation]
