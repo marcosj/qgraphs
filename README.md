@@ -6,47 +6,6 @@ A variational quantum computing framework designed to solve the **induced subgra
 
 The pipeline reduces subgraph isomorphism to a maximum clique variation via modular product graphs, maps it to a constrained Hamiltonian, and optimizes it using symmetry-preserving quantum circuits.
 
-```mermaid
-graph TD
-    Sub["Induced Subgraph Isomorphism Problem H ⊆ G"] --> Red["Reduction to Clique Problem / Modular Product Graph"]
-    
-    %% Clean parallel split from Reduction
-    Red --> Ham["Hamiltonian: QUBO Formulation H_tot = H_A + H_B"]
-    Red --> Ansatz["Equivariant Ansatz"]
-    
-    %% Left Branch: Hamiltonian & Ising
-    Ham --> Ising["Ising Formulation: x_i = (1 - Z_i) / 2"]
-    
-    %% Right Branch: Ansatz Pipeline
-    Ansatz --> Dicke["Pseudo-Dicke State Preparation"]
-    Dicke --> Layers["L Layers: Phase Separator & Symmetry Preserving Mixer"]
-    
-    %% Convergence to Estimator / VQE loop
-    Ising --> Est["Estimator"]
-    Layers --> Est
-    
-    Est --> Opt["Classical Optimizer"]
-    Opt -- "θ" --> Est
-    Opt -- "θ̂" --> Sampler["Sampler"]
-    
-    Sampler --> Check{"E_0 == 0?"}
-    Check -- "No" --> Ham
-    Check -- "Yes" --> Found([Isomorphism Found])
-
-    style Sub fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Red fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Ham fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Ising fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Ansatz fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Dicke fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Layers fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Est fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Opt fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Sampler fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Check fill:#161b22,stroke:#30363d,color:#c9d1d9
-    style Found fill:#161b22,stroke:#30363d,color:#c9d1d9
-```
-
 ![flowchart](iso.png)
 
 ## 🛠️ Key Architectural Components
